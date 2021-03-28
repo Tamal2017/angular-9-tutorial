@@ -1,1 +1,29 @@
-<p>about works!</p>
+<ul>
+    <li>{{info.name}}</li>
+    <li>{{info.email}}</li>
+    <li>{{info.phone}}</li>
+</ul>
+
+<div>
+
+    <input type="text" [(ngModel)]="comment.message">
+
+    <button (click)="addComment()" disabled="newComment">
+        Add comment
+    </button>
+
+    <div *ngIf="comments.length > 0; else noComment">
+        <h3>Liste des commentaires</h3>
+        <ul>
+            <li *ngFor="let comment of comments">
+                {{comment.message}} : {{comment.date}}
+            </li>
+        </ul>
+
+    </div>
+
+    <ng-template #noComment>
+        <p>Aucun commentaire pour le moment!</p>
+    </ng-template>
+
+</div>
