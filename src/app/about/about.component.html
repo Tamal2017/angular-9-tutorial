@@ -1,29 +1,45 @@
-<ul>
-    <li>{{info.name}}</li>
-    <li>{{info.email}}</li>
-    <li>{{info.phone}}</li>
-</ul>
+<div class="row">
+    <div class="col-sm-5 col-md-6">
 
-<div>
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">About Component</div>
+            <div class="panel-body">
 
-    <input type="text" [(ngModel)]="comment.message">
+                <!-- User infos -->
+                <ul>
+                    <li>{{info.name}}</li>
+                    <li>{{info.email}}</li>
+                    <li>{{info.phone}}</li>
+                </ul>
+                <!-- write a comment -->
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="comment">Message:</label>&nbsp;
+                        <input type="text" [(ngModel)]="comment.message" class="form-control" id="comment" name="comment" placeholder="message...">&nbsp;
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="addComment()">Add comment</button>
+                    <p></p>
+                </form>
 
-    <button (click)="addComment()" disabled="newComment">
-        Add comment
-    </button>
+                <div *ngIf="comments.length > 0; else noComment">
+                    <h3>
+                        <p>Liste des commentaires</p>
+                    </h3>
+                    <ul class="list-group">
+                        <li *ngFor="let comment of comments" class="list-group-item">
+                            <span class="badge primary">{{comment.date| date: 'dd/MM/yyyy'}}</span> {{comment.message}}
+                        </li>
+                    </ul>
+                </div>
+                <!-- Empty list -->
+                <ng-template #noComment>
+                    <div class="alert alert-info" role="alert">
+                        <p>Aucun commentaire pour le moment!</p>
+                    </div>
 
-    <div *ngIf="comments.length > 0; else noComment">
-        <h3>Liste des commentaires</h3>
-        <ul>
-            <li *ngFor="let comment of comments">
-                {{comment.message}} : {{comment.date}}
-            </li>
-        </ul>
-
+                </ng-template>
+            </div>
+        </div>
     </div>
-
-    <ng-template #noComment>
-        <p>Aucun commentaire pour le moment!</p>
-    </ng-template>
-
 </div>
