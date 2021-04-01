@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -7,15 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-   users: Array<User> = [];
-   user: User;
+  users: Array<User> = [];
+  user: User;
+  formGroup: FormGroup;
+  submitted = false;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.formGroup = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['0000000000', Validators.required],
+      address: ['', Validators.required],
+    });
+    this.formGroup.setValue(new User());
   }
 
   addUser() {
+    this.submitted = true;
+    if (!this.formGroup.invalid) {
+      this.users.push(this.formGroup.value);
+    }
 
   }
 

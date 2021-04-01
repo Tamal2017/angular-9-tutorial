@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from 'src/app/user/user.component';
 
 @Injectable()
 export class ExampleService {
@@ -12,13 +13,13 @@ export class ExampleService {
     return this.http.get(this.host + '/tasks');
   }
 
-  login(_user) {
-    return this.http.post(this.host + '/login', _user, { observe: 'body' });
+  login(user: User) {
+    return this.http.post(this.host + '/login', user, { observe: 'body' });
   }
 
-  saveTask(_task) {
+  saveTask(task) {
     return this.http.post(this.host + '/tasks',
-      _task,
+      task,
       {
         headers: new HttpHeaders({ autorization: 'my-token' })
       });
