@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="col-sm-5 col-md-6">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">User Form</div>
+            <div class="panel-body">
+                <!-- User form -->
+                <form name="userFrom" autocomplete="off">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" id="address" rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- User list -->
+    <div class="col-sm-7 col-md-9">
+        <div *ngIf="users.length > 0; else emptyList">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.address}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Empty list message -->
+        <ng-template #emptyList>
+            <div class="alert alert-info col-sm-6 col-md-8" role="alert">
+                <p>Aucun utilisateur pour le moment!</p>
+            </div>
+        </ng-template>
+    </div>
+</div>

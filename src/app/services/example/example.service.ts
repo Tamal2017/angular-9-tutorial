@@ -24,4 +24,18 @@ export class ExampleService {
       });
   }
 
+  /* just for example */
+  save1() {
+    return this.http.get(this.host + '/tasks', { headers: new HttpHeaders({ Accept: 'application/json' }) });
+  }
+
+  save2() {
+    const headers = new HttpHeaders();
+    headers.set('autorization', 'my-token');
+    headers.set('Accept', 'application/json');
+    headers.set('Content-Type', 'application/json');
+
+    return this.http.post(this.host + '/tasks', headers);
+  }
+
 }
