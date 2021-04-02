@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UserComponent implements OnInit {
 
   users: Array<User> = [];
-  user: User;
   formGroup: FormGroup;
   submitted = false;
 
@@ -27,10 +26,9 @@ export class UserComponent implements OnInit {
 
   addUser() {
     this.submitted = true;
-    if (!this.formGroup.invalid) {
+    if (! this.formGroup.invalid) {
       this.users.push(this.formGroup.value);
     }
-
   }
 
 }

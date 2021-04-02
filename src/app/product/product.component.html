@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="col-sm-4 col-md-6">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Product Component</div>
+            <div class="panel-body">
+                <form name="productForm" #productForm="ngForm" (ngSubmit)="addProduct(productForm)" autocomplete="off">
+
+                    <div class="form-group" [ngClass]="{'has-error': productForm.submitted && name.errors}">
+                        <label for="name">Name</label>
+                        <input type="email" [(ngModel)]="product.name" required class="form-control" #name="ngModel" name="name"
+                            placeholder="name...">
+                            <span *ngIf="productForm.submitted && name.errors">
+                                <span id="message-error" *ngIf="name.errors.required" class="help-block"> Name is required !</span>
+                            </span>
+                    </div>
+
+                    <div class="form-group" [ngClass]="{'has-error': productForm.submitted && quantity.errors}">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" [(ngModel)]="product.quantity" required class="form-control" #quantity="ngModel"
+                            name="quantity" placeholder="quantity ...">
+                            <span *ngIf="productForm.submitted && quantity.errors">
+                                <span id="message-error" *ngIf="quantity.errors.required" class="help-block"> Quantity is required !</span>
+                            </span>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" [(ngModel)]="product.available" id="available" name="available">
+                            Available
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 col-md-9">
+        <div *ngIf="products.length > 0; else emptyMessage">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{product.name}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td>{{product.available}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ng-template #emptyMessage>
+            <div class="alert alert-info col-sm-6 col-md-6" role="alert">
+                <p>Aucun Produit dans la liste!</p>
+            </div>
+
+        </ng-template>
+    </div>
+
+</div>
