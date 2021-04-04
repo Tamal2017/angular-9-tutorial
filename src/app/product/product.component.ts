@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit {
 
   addProduct(form: NgForm) {
     if (form.valid) {
-      this.products.push({ 'name': this.product.name, 'quantity': this.product.quantity, 'available': this.product.available });
+      this.products.push({ name: this.product.name, quantity: this.product.quantity, available: this.product.available });
       this.product = new Product();
     }
   }
