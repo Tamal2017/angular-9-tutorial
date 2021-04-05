@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
     this.formGroup = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['0000000000', Validators.required],
+      phone: ['0000000000', [Validators.required, Validators.pattern(/(^\d{10}$)|(^\d{3}[-\.\s]\d{3}[-\.\s]\d{4}$)|(^\d{3}-\d{3}-\d{4}\s(x|(ext))\d{3,5}$)|(^\+(?:[0-9] ?){6,14}[0-9]$)|(^\(\d{3}\)-\d{3}-\d{4}$)/)]],
       address: ['', Validators.required],
     });
     this.formGroup.setValue(new User());
@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
 
   addUser() {
     this.submitted = true;
-    if (! this.formGroup.invalid) {
+    if (!this.formGroup.invalid) {
       this.users.push(this.formGroup.value);
     }
   }

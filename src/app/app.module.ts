@@ -12,6 +12,8 @@ import { AboutService } from './services/about/about.service';
 import { TaskComponent } from './task/task.component';
 import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
+import { ProductFormComponent } from './product/product-form/product-form.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ProductComponent } from './product/product.component';
     ContactsComponent,
     TaskComponent,
     UserComponent,
-    ProductComponent
+    ProductComponent,
+    ProductFormComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
