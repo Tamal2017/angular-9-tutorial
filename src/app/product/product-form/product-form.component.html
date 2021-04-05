@@ -1,0 +1,34 @@
+<div class="col-sm-4 col-md-6">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Product Component</div>
+        <div class="panel-body">
+            <form name="productForm" #productForm="ngForm" (ngSubmit)="addProduct(productForm)" autocomplete="off">
+
+                <div class="form-group" [ngClass]="{'has-error': productForm.submitted && name.errors}">
+                    <label for="name">Name</label>
+                    <input type="email" [(ngModel)]="product.name" required class="form-control" #name="ngModel" name="name" placeholder="name...">
+                    <span *ngIf="productForm.submitted && name.errors">
+                                <span id="message-error" *ngIf="name.errors.required" class="help-block"> Name is required !</span>
+                    </span>
+                </div>
+
+                <div class="form-group" [ngClass]="{'has-error': productForm.submitted && quantity.errors}">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" [(ngModel)]="product.quantity" required class="form-control" #quantity="ngModel" name="quantity" placeholder="quantity ...">
+                    <span *ngIf="productForm.submitted && quantity.errors">
+                                <span id="message-error" *ngIf="quantity.errors.required" class="help-block"> Quantity is required !</span>
+                    </span>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                            <input type="checkbox" [(ngModel)]="product.available" id="available" name="available">
+                            Available
+                        </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

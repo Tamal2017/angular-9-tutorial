@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -16,11 +16,9 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addProduct(form: NgForm) {
-    if (form.valid) {
-      this.products.push({ name: this.product.name, quantity: this.product.quantity, available: this.product.available });
-      this.product = new Product();
-    }
+  addProduct($event: Product) {
+    this.products.push($event);
+    this.product = new Product();
   }
 
 }
