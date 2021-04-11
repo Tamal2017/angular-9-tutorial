@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['0000000000', [Validators.required,
-        Validators.pattern(/(^\d{9}$)|(^\d{2}[-\.\s]\d{3}[-\.\s]\d{2}[-\.\s]\d{2}$)|(^\(\d{2}\)-\d{3}-\d{2}-\d{2}$)/)]],
+        Validators.pattern(/(^\d{9}$)|(^\d{2}[-\.\s]\d{3}[-\.\s]\d{2}[-\.\s]\d{2}$)/)]],
       address: ['', Validators.required],
     });
     this.formGroup.setValue(new User());
