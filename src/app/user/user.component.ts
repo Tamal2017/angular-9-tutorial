@@ -18,7 +18,8 @@ export class UserComponent implements OnInit {
     this.formGroup = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['0000000000', [Validators.required, Validators.pattern(/(^\d{10}$)|(^\d{3}[-\.\s]\d{3}[-\.\s]\d{4}$)|(^\d{3}-\d{3}-\d{4}\s(x|(ext))\d{3,5}$)|(^\+(?:[0-9] ?){6,14}[0-9]$)|(^\(\d{3}\)-\d{3}-\d{4}$)/)]],
+      phone: ['0000000000', [Validators.required,
+        Validators.pattern(/(^\d{9}$)|(^\d{2}[-\.\s]\d{3}[-\.\s]\d{2}[-\.\s]\d{2}$)|(^\(\d{2}\)-\d{3}-\d{2}-\d{2}$)/)]],
       address: ['', Validators.required],
     });
     this.formGroup.setValue(new User());
