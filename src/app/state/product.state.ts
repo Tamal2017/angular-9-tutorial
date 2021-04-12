@@ -11,7 +11,7 @@ export interface AppDataState<T> {
 }
 
 export enum ProductActionType {
-    CREATE = '[Product] Create Product',
+    CREATE_PRODUCT = '[Product] Create Product',
     UPDATE_PRODUCT = '[Product] Update Product',
     GET_ALL_PRODUCT = '[Product] Get all products'
 }
