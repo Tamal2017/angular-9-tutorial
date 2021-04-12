@@ -13,7 +13,7 @@ export class ProductFormComponent implements OnInit {
   product: Product;
 
   @Output()
-  productUpdated: EventEmitter<ActionEvent> = new EventEmitter<ActionEvent>();
+  productPopulated: EventEmitter<ActionEvent> = new EventEmitter<ActionEvent>();
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class ProductFormComponent implements OnInit {
 
   addProduct(form: NgForm) {
     if (form.valid) {
-    this.productUpdated.emit({type: ProductActionType.CREATE_PRODUCT, payload: this.product});
+    this.productPopulated.emit({type: ProductActionType.CREATE_PRODUCT, payload: this.product});
     }
   }
 }
