@@ -1,0 +1,41 @@
+
+    <div class="col-sm-5 col-md-6">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">User Form</div>
+            <div class="panel-body">
+                <!-- User form -->
+                <form name="userFrom" #userForm (ngSubmit)="addUser()" [formGroup]="formGroup" autocomplete="off">
+                    <div class="form-group" [ngClass]="{'has-error': submitted && formGroup.controls.name.errors}">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name">
+                        <span *ngIf="submitted && formGroup.controls.name.errors">
+                            <span *ngIf="formGroup.controls.name.errors.required" class="help-block"> Name is required! </span>
+                        </span>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': submitted && formGroup.controls.email.errors}">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" formControlName="email">
+                        <span *ngIf="submitted && formGroup.controls.email.errors">
+                            <span *ngIf="formGroup.controls.email.errors.required" class="help-block"> Email is required! </span>
+                        <span *ngIf="formGroup.controls.email.errors.email" class="help-block"> email format is incorrect! </span>
+                        </span>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error': submitted && formGroup.controls.phone.errors}">
+                        <label for="phone">Phone number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone number" formControlName="phone">
+                        <span *ngIf="submitted && formGroup.controls.phone.errors">
+                            <span *ngIf="formGroup.controls.phone.errors.required" class="help-block"> Email is required. </span>
+                        <span *ngIf="formGroup.controls.phone.errors.pattern" class="help-block"> Phone number format is incorrect. </span>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" id="address" rows="3" formControlName="address"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>

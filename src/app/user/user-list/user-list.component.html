@@ -1,0 +1,33 @@
+
+    <!-- User list -->
+    <div class="col-sm-7 col-md-9">
+        <div *ngIf="users?.length > 0; else emptyList">
+            <h4>
+                <p>Liste des utilisateurs </p>
+            </h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.address}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Empty list message -->
+        <ng-template #emptyList>
+            <div class="alert alert-info col-sm-6 col-md-8" role="alert">
+                <p>Aucun utilisateur pour le moment!</p>
+            </div>
+        </ng-template>
+    </div>

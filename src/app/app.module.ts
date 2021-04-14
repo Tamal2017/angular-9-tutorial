@@ -14,6 +14,8 @@ import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
 import { ProductFormComponent } from './product/product-form/product-form.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserListComponent } from './user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ProductListComponent } from './product/product-list/product-list.compon
     UserComponent,
     ProductComponent,
     ProductFormComponent,
-    ProductListComponent
+    ProductListComponent,
+    UserFormComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
