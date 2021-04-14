@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ActionEvent, ProductActionType } from '../state/product.state';
 
 @Component({
   selector: 'app-product',
@@ -16,9 +16,21 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addProduct($event: Product) {
-    this.products.push($event);
+  handleActionEvent($event: ActionEvent) {
+    switch ($event.type) {
+      case ProductActionType.CREATE_PRODUCT:
+        this.addProduct($event.payload);
+        break;
+      case ProductActionType.UPDATE_PRODUCT:
+        break;
+      case ProductActionType.GET_ALL_PRODUCT:
+        break;
+    }
     this.product = new Product();
+  }
+
+  addProduct(product: Product) {
+    this.products.push(product);
   }
 
 }
