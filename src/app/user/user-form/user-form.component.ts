@@ -29,8 +29,15 @@ export class UserFormComponent implements OnInit {
 
   addUser() {
     this.submitted = true;
-    if (!this.formGroup.invalid) {
-      this.emitUserPopulated.emit(this.formGroup.value);
+    if (this.formGroup.invalid) {
+      return;
     }
+    this.emitUserPopulated.emit(this.formGroup.value);
+    this.onCancel();
+  }
+
+  onCancel() {
+    this.submitted = false;
+    this.formGroup.reset();
   }
 }

@@ -18,7 +18,7 @@
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" formControlName="email">
                         <span *ngIf="submitted && formGroup.controls.email.errors">
                             <span *ngIf="formGroup.controls.email.errors.required" class="help-block"> Email is required! </span>
-                        <span *ngIf="formGroup.controls.email.errors.email" class="help-block"> email format is incorrect! </span>
+                            <span *ngIf="formGroup.controls.email.errors.email" class="help-block"> email format is incorrect! </span>
                         </span>
                     </div>
                     <div class="form-group" [ngClass]="{'has-error': submitted && formGroup.controls.phone.errors}">
